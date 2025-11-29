@@ -1,0 +1,186 @@
+# .gitignore
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.production
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+
+# Uploads and processed files
+uploads/
+processed/
+cache/
+*.png
+*.jpg
+*.jpeg
+*.pdf
+!.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+build/
+dist/
+.next/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Docker
+*.pid
+*.seed
+
+---
+# README.md
+# Invoice OCR Processing System
+
+Enterprise-grade invoice processing system with OCR capabilities for Arabic, English (typed and handwritten).
+
+## Architecture
+
+- **Frontend**: React 18+ with Material-UI
+- **Backend**: Node.js + Express + MongoDB
+- **OCR Engine**: Python FastAPI with PaddleOCR + Nanonets + GPT-4
+- **Database**: MongoDB 7.0
+- **Containerization**: Docker + Docker Compose
+
+## Features
+
+- Multi-language OCR (Arabic, English typed/handwritten)
+- Real-time validation and correction
+- Batch processing
+- Analytics and reporting
+- Role-based access control
+- Duplicate detection
+- Export to PDF/Excel
+- Activity logging and audit trails
+
+## Quick Start
+
+### Prerequisites
+- Docker & Docker Compose
+- Node.js 18+ (for local development)
+- Python 3.10+ (for local development)
+
+### Installation
+
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd invoice-ocr-system
+```
+
+2. Set up environment variables
+```bash
+# Copy example env files
+cp backend/.env.example backend/.env
+cp ocr-api/.env.example ocr-api/.env
+cp frontend/.env.example frontend/.env
+
+# Edit .env files with your values
+```
+
+3. Start with Docker
+```bash
+docker-compose up -d
+```
+
+4. Access the application
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:4000
+- OCR API: http://localhost:5000
+
+### Local Development
+
+#### Backend
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+#### OCR API
+```bash
+cd ocr-api
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
+```
+
+#### Frontend
+```bash
+cd frontend
+npm install
+npm start
+```
+
+## Testing
+
+Run tests for each service:
+```bash
+# Backend
+cd backend && npm test
+
+# OCR API
+cd ocr-api && pytest
+
+# Frontend
+cd frontend && npm test
+```
+
+## Project Structure
+
+```
+invoice-ocr-system/
+├── backend/          # Node.js API
+├── ocr-api/         # Python OCR service
+├── frontend/        # React app
+└── nginx/           # Reverse proxy config
+```
+
+## API Documentation
+
+Once running, access API documentation at:
+- Backend: http://localhost:4000/api-docs
+- OCR API: http://localhost:5000/docs
+
+## License
+
+MIT
+
+## Support
+
+For issues and questions, please open a GitHub issue.
+

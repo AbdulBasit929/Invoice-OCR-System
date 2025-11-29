@@ -1,0 +1,663 @@
+/* src/styles/mobile-responsive.css - Mobile-Optimized Styles */
+/* Phase 4: CSS optimizations for mobile responsiveness */
+
+/* ===== RESET & BASE ===== */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html {
+  /* Better font rendering on mobile */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent text size adjustment after orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior-y: none;
+  
+  /* Safe area for iOS notch */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* ===== TOUCH OPTIMIZATION ===== */
+/* Minimum touch target size (48x48px) */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+.touch-target {
+  min-width: 48px;
+  min-height: 48px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better scroll performance */
+.scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* ===== RESPONSIVE UTILITIES ===== */
+/* Hide on mobile */
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Hide on tablet */
+@media (min-width: 601px) and (max-width: 960px) {
+  .hide-tablet {
+    display: none !important;
+  }
+}
+
+/* Hide on desktop */
+@media (min-width: 961px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .show-mobile {
+    display: block !important;
+  }
+  
+  .show-mobile-flex {
+    display: flex !important;
+  }
+  
+  .show-mobile-inline {
+    display: inline !important;
+  }
+}
+
+/* ===== MOBILE TYPOGRAPHY ===== */
+@media (max-width: 600px) {
+  /* Scale down headers */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  h3 {
+    font-size: 1.25rem !important;
+  }
+  
+  h4 {
+    font-size: 1.125rem !important;
+  }
+  
+  h5 {
+    font-size: 1rem !important;
+  }
+  
+  h6 {
+    font-size: 0.875rem !important;
+  }
+  
+  /* Better line height for readability */
+  body,
+  p {
+    line-height: 1.6 !important;
+  }
+  
+  /* Prevent text overflow */
+  .text-truncate-mobile {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* ===== MOBILE SPACING ===== */
+@media (max-width: 600px) {
+  /* Reduce container padding */
+  .container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+  
+  /* Reduce card padding */
+  .card-mobile {
+    padding: 16px !important;
+  }
+  
+  /* Stack elements on mobile */
+  .stack-mobile {
+    flex-direction: column !important;
+  }
+  
+  /* Full width on mobile */
+  .full-width-mobile {
+    width: 100% !important;
+  }
+}
+
+/* ===== MOBILE CHARTS ===== */
+@media (max-width: 600px) {
+  /* Chart containers */
+  .recharts-wrapper {
+    font-size: 10px !important;
+  }
+  
+  /* Rotate axis labels */
+  .recharts-xAxis .recharts-text {
+    transform: rotate(-45deg);
+    text-anchor: end !important;
+  }
+  
+  /* Smaller legend */
+  .recharts-legend-wrapper {
+    font-size: 10px !important;
+  }
+  
+  /* Hide chart grid on very small screens */
+  @media (max-width: 375px) {
+    .recharts-cartesian-grid {
+      display: none;
+    }
+  }
+}
+
+/* ===== MOBILE TABLES ===== */
+@media (max-width: 600px) {
+  /* Convert tables to cards */
+  .table-mobile-cards table,
+  .table-mobile-cards thead,
+  .table-mobile-cards tbody,
+  .table-mobile-cards th,
+  .table-mobile-cards td,
+  .table-mobile-cards tr {
+    display: block;
+  }
+  
+  .table-mobile-cards thead tr {
+    display: none;
+  }
+  
+  .table-mobile-cards tr {
+    margin-bottom: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  
+  .table-mobile-cards td {
+    position: relative;
+    padding-left: 50%;
+    text-align: right;
+  }
+  
+  .table-mobile-cards td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 12px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+/* ===== MOBILE FORMS ===== */
+@media (max-width: 600px) {
+  /* Full width inputs */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100%;
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+  
+  /* Larger touch targets for checkboxes/radio */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Stack form buttons */
+  .form-buttons-mobile {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .form-buttons-mobile button {
+    width: 100%;
+  }
+}
+
+/* ===== MOBILE MODALS/DIALOGS ===== */
+@media (max-width: 600px) {
+  /* Full screen modals on mobile */
+  .modal-fullscreen-mobile {
+    margin: 0 !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Bottom sheet style */
+  .bottom-sheet-mobile {
+    margin: 0 !important;
+    max-width: 100% !important;
+    align-self: flex-end !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+}
+
+/* ===== MOBILE NAVIGATION ===== */
+@media (max-width: 600px) {
+  /* Bottom navigation bar */
+  .bottom-nav-mobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  /* Hamburger menu */
+  .hamburger-menu {
+    display: block !important;
+  }
+  
+  /* Hide desktop nav */
+  .desktop-nav {
+    display: none !important;
+  }
+}
+
+/* ===== MOBILE CARDS ===== */
+@media (max-width: 600px) {
+  .card-mobile {
+    margin: 8px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  }
+  
+  .card-mobile-compact {
+    padding: 12px !important;
+  }
+  
+  .card-mobile-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+}
+
+/* ===== MOBILE BUTTONS ===== */
+@media (max-width: 600px) {
+  /* Larger buttons on mobile */
+  .btn-mobile {
+    min-height: 48px;
+    font-size: 16px;
+    padding: 12px 24px;
+  }
+  
+  /* Full width buttons */
+  .btn-mobile-full {
+    width: 100%;
+  }
+  
+  /* Icon buttons */
+  .icon-btn-mobile {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ===== MOBILE GRIDS ===== */
+@media (max-width: 600px) {
+  /* Single column on mobile */
+  .grid-mobile-single {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Two columns on mobile */
+  .grid-mobile-two {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Reduce gap */
+  .grid-mobile-gap {
+    gap: 12px !important;
+  }
+}
+
+/* ===== MOBILE IMAGES ===== */
+@media (max-width: 600px) {
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Prevent image overflow */
+  .img-mobile-contain {
+    object-fit: contain;
+    width: 100%;
+  }
+}
+
+/* ===== MOBILE ANIMATIONS ===== */
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth transitions */
+.mobile-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== MOBILE TOOLTIPS ===== */
+@media (max-width: 600px) {
+  /* Larger tooltips on mobile */
+  .tooltip-mobile {
+    font-size: 14px !important;
+    padding: 8px 12px !important;
+    max-width: 250px !important;
+  }
+}
+
+/* ===== MOBILE LOADING STATES ===== */
+/* Skeleton loaders */
+.skeleton-mobile {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Pull to refresh indicator */
+.pull-to-refresh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-60px);
+  transition: transform 0.3s;
+}
+
+.pull-to-refresh.active {
+  transform: translateY(0);
+}
+
+/* ===== MOBILE ACCESSIBILITY ===== */
+/* Focus styles for keyboard navigation */
+@media (max-width: 600px) {
+  *:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+  }
+  
+  /* Remove focus for mouse users */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+  
+  button,
+  a {
+    font-weight: bold !important;
+  }
+}
+
+/* ===== MOBILE SCROLL BEHAVIOR ===== */
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for touch devices */
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* ===== MOBILE PRINT STYLES ===== */
+@media print {
+  /* Hide mobile-only elements when printing */
+  .hide-print,
+  .bottom-nav-mobile,
+  .hamburger-menu,
+  button {
+    display: none !important;
+  }
+  
+  /* Ensure content fits page */
+  @page {
+    margin: 1cm;
+  }
+  
+  body {
+    font-size: 12pt;
+  }
+}
+
+/* ===== PWA SPECIFIC ===== */
+/* Standalone mode (when installed as PWA) */
+@media (display-mode: standalone) {
+  /* Add extra top padding for status bar */
+  body {
+    padding-top: calc(env(safe-area-inset-top) + 12px);
+  }
+  
+  /* Hide browser chrome elements */
+  .browser-only {
+    display: none !important;
+  }
+}
+
+/* ===== MOBILE PERFORMANCE ===== */
+/* Hardware acceleration for smoother animations */
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Optimize for touch scrolling */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+}
+
+.touch-scroll > * {
+  scroll-snap-align: start;
+}
+
+/* ===== LANDSCAPE ORIENTATION ===== */
+@media (max-width: 960px) and (orientation: landscape) {
+  /* Adjust heights in landscape */
+  .chart-container {
+    height: 200px !important;
+  }
+  
+  /* Hide some elements to save space */
+  .hide-landscape {
+    display: none !important;
+  }
+  
+  /* Adjust spacing */
+  .container {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode variables if needed */
+  :root {
+    --mobile-bg: #1a1a1a;
+    --mobile-text: #ffffff;
+    --mobile-border: #333333;
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+/* Flexbox utilities */
+.flex-mobile {
+  display: flex !important;
+}
+
+.flex-col-mobile {
+  flex-direction: column !important;
+}
+
+.items-center-mobile {
+  align-items: center !important;
+}
+
+.justify-between-mobile {
+  justify-content: space-between !important;
+}
+
+/* Spacing utilities */
+.m-0-mobile {
+  margin: 0 !important;
+}
+
+.p-0-mobile {
+  padding: 0 !important;
+}
+
+.mt-2-mobile {
+  margin-top: 16px !important;
+}
+
+.mb-2-mobile {
+  margin-bottom: 16px !important;
+}
+
+/* Text utilities */
+.text-center-mobile {
+  text-align: center !important;
+}
+
+.text-left-mobile {
+  text-align: left !important;
+}
+
+.text-right-mobile {
+  text-align: right !important;
+}
+
+/* ===== MOBILE SPECIFIC FIXES ===== */
+/* Fix iOS Safari issues */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari safe area */
+  body {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  }
+  
+  /* Fix 100vh in iOS Safari */
+  .full-height-mobile {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Fix Android Chrome issues */
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  /* Android specific fixes */
+  select {
+    background-image: none;
+  }
+}
+
+/* ===== END OF MOBILE STYLES ===== */
+
+/* 
+USAGE GUIDE:
+
+1. Import in your main CSS/JSX:
+   import './styles/mobile-responsive.css';
+
+2. Apply utility classes:
+   <div className="hide-mobile show-desktop">
+     Desktop only content
+   </div>
+
+3. Use in components:
+   <div className="card-mobile full-width-mobile">
+     Mobile-optimized card
+   </div>
+
+4. Customize as needed:
+   Add your own breakpoints and utilities based on design requirements
+*/
